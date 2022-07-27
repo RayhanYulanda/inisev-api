@@ -59,4 +59,9 @@ class Post extends Model
         return $this->belongsTo(Website::class, 'website_id');
     }
 
+    public function sendEmail()
+    {
+        
+    }
+
 }

@@ -60,7 +60,7 @@ class PostAPIController extends AppBaseController
     {
         $input = $request->all();
         $input['website_id'] = Website::whereDomain($input['website_domain'])->firstOrFail()->id;
-        $input['slug'] = Str::slug($input['title']);
+        $input['slug'] = Str::slug($input['title'])."-".uniqid();
 
         $post = $this->postRepository->create($input);
 

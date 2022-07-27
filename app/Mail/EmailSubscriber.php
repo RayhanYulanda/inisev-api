@@ -38,7 +38,7 @@ class EmailSubscriber extends Mailable implements ShouldQueue
         return $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
             ->to($this->user->email)
             ->subject("You've subscribe the website ".$this->post->website->domain)
-            ->text("You got an post from subscribed website: ".$this->post->title)
-            ->html("<a href='".$this->post->website->domain."/".$this->post->slug."'>Click here</a>");
+            ->html("You got an post from subscribed website: ".$this->post->title)
+            ->html("<a href='".$this->post->website->domain."/".$this->post->slug."'>Click here</a> to see the post");
     }
 }

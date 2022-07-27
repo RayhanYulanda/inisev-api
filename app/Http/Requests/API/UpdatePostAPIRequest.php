@@ -4,6 +4,7 @@ namespace App\Http\Requests\API;
 
 use App\Http\Requests\APIsRequest;
 use App\Models\Post;
+use Illuminate\Validation\Rule;
 
 class UpdatePostAPIRequest extends APIsRequest
 {
@@ -24,8 +25,13 @@ class UpdatePostAPIRequest extends APIsRequest
      */
     public function rules()
     {
+        $data = [$this->route('user_id'), $this->route('website_id')];
+        $uniqueRule =  Rule::unique('user_subscribe_website')->where(function ($query) use ($data){
+            $query->where('website_id', $data['website_id']);
+            $query->where('user_id', $data['user_id']);
+        });
         $rules = [
-
+            'website_id' => [$uniqueRule],
         ];
 
         return $rules;

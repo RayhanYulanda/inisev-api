@@ -54,5 +54,9 @@ class Post extends Model
         'title' => 'required',
     ];
 
+    public function website()
+    {
+        return $this->belongsTo(Website::class, 'website_id');
+    }
 
 }
